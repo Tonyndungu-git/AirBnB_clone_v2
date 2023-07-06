@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """
-that deletes out-of-date archives,
-using the function do_clean
+Fabric script (based on the file 2-do_deploy_web_static.py)
+that creates and distributes an archive to your web servers,
+using the function deploy:
 """
+
 from datetime import datetime
 from fabric.api import local, put, run, env
 import os.path
@@ -49,7 +51,6 @@ def do_deploy(archive_path):
 def deploy():
     """
     The script should take the following steps:
-
     Call the do_pack() function and store the path of the created archive
     Return False if no archive has been created
     Call the do_deploy(archive_path) function,
@@ -63,7 +64,6 @@ def deploy():
     if (deploy is False):
         return False
     return deploy
-
 
 def do_clean(number=0):
     """
