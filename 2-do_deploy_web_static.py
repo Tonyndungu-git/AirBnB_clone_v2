@@ -18,17 +18,19 @@ def do_deploy(archive_path):
     """
     if os.path.exists(archive_path) is False:
         return False
-    arch_name = archive_path.split('/')[1]
-    arch_name_nex = arch_name.split(".")[0]
-    re_path = "/data/web_static/releases/" + arch_name_nex
-    up_path = '/tmp/' + arch_name
-    put(archive_path, up_path)
-    run('mkdir -p ' + re_path)
-    run('tar -xzf /tmp/{} -C {}/'.format(arch_name, re_path))
-    run('rm {}'.format(up_path))
-    mv = 'mv ' + re_path + '/web_static/* ' + re_path + '/'
-    run(mv)
-    run('rm -rf ' + re_path + '/web_static')
-    run('rm -rf /data/web_static/current')
-    run('ln -s ' + re_path + ' /data/web_static/current')
-    return True
+    try:
+        arch_name = archive_path.split('/')[1]
+        arch_name_nex = arch_name.split(".")[0]
+        re_path = "/data/web_static/releases/"
+        up_path = '/tmp/'
+        put(archive_path, up_path)
+        run('mkdir -p {}{}/'.format(repath, arch_name_nex))
+        run('tar -xzf /tmp/{} -C {}{}/'.format(arch_name, re_path, arch_name_nex))
+        run('rm /tmp/{}'.format(arch_name))
+        run('mv {0}{1}/web_static/* {0}{1}/'.format(repath, arch_name_nex))
+        run('rm -rf {}{}/web_static'.format(repath, arch_name_nex))
+        run('rm -rf /data/web_static/current')
+        run('ln -s {}{}/ /data/web_static/current'.format(path, arch_name_nex))
+        return True
+    except:
+        return False
