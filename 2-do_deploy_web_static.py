@@ -1,20 +1,15 @@
 #!/usr/bin/python3
 """
- generates a .tgz archive from the contents
-of the web_static folder
-and deploy it to web servers
+Fabric script based on the file 1-pack_web_static.py that distributes an
+archive to the web servers
 """
 
 from fabric.api import put, run, env
-import os.path import exists
-
+from os.path import exists
 env.hosts = ['35.175.104.197', '100.25.181.13']
 
-
 def do_deploy(archive_path):
-    """
-        deploy archive to web servers
-    """
+    """distributes an archive to the web servers"""
     if exists(archive_path) is False:
         return False
     try:
