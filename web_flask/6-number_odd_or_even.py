@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+"""
+flask model for route
+"""
 from flask import Flask, render_template
 
 app = Flask(__name__)
