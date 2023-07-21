@@ -5,6 +5,7 @@ from sqlalchemy import Column, String, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 import models
 import os
+from models.city import City
 
 STRG = os.environ.get('HBNB_TYPE_STORAGE')
 
