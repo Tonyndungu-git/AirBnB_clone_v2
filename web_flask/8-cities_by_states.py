@@ -11,9 +11,7 @@ storage.all()
 
 @app.teardown_appcontext
 def teardown_data(self):
-    """
-        refrech data
-    """
+    """ reload """
     storage.close()
 
 
